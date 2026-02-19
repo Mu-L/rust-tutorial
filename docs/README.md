@@ -1098,6 +1098,22 @@ pub fn save_todo_list(save_file: &str, todos: &Vec<TodoItem>) {
 }
 ```
 
+修改 `create_todo`,为 `todos` 根据用户输入添加 `TodoItem`:
+
+```rust
+// src/todo/create.rs
+use crate::todo::core::TodoItem;
+pub fn create_todo(todos: Vec<TodoItem>) {
+  // ...
+  while ok {
+    //...
+  }
+  // ...
+  println!("create todo title: {}, content: {}", title, content);
+  todos.push(TodoItem::new(title.as_str(), content.as_str()));
+}
+```
+
 ```rust
 // src/main.rs
 use crate::todo::storage::{read_todo_list, save_todo_list};

@@ -925,7 +925,7 @@ pub mod list;
 
 如果使用的 `rustc` 版本在 1.30 以前, 那么这是唯一声明模块入口的方法。
 
-但如果实在 1.30 以后, 那么可以在模块同级位置创建一个同名的 `.rs` 文件来作为模块入口声明。
+但如果是在 1.30 以后, 那么可以在模块同级位置创建一个同名的 `.rs` 文件来作为模块入口声明。
 
 这里使用的就是使用与模块同名的 `.rs` 文件作为模块入口声明。
 
@@ -1097,12 +1097,13 @@ pub fn save_todo_list(save_file: &str, todos: &Vec<TodoItem>) {
   fs::write(save_file, data).unwrap();
 }
 ```
+
 修改 `create_todo`,为 `todos` 根据用户输入添加 `TodoItem`:
 
 ```rust
 // src/todo/create.rs
 use crate::todo::core::TodoItem;
-pub fn create_todo(todos: Vec<TodoItem> {
+pub fn create_todo(todos: Vec<TodoItem>) {
   // ...
   while ok {
     //...
@@ -1110,7 +1111,7 @@ pub fn create_todo(todos: Vec<TodoItem> {
   // ...
   println!("create todo title: {}, content: {}", title, content);
   todos.push(TodoItem::new(title.as_str(), content.as_str()));
-}   
+}
 ```
 
 ```rust
